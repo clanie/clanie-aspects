@@ -19,8 +19,8 @@
 	<url>http://mvn.cn-consult.dk/release-site/${project.artifactId}</url>
 
 	<scm>
-		<connection>scm:git:ssh://git/var/cache/git/libs/clanie-aspects.git</connection>
-		<url>http://git.cn-consult.dk/?p=libs/clanie-aspects.git</url>
+		<connection>scm:git:git://github.com/clanie/clanie-aspects.git</connection>
+		<url>https://github.com/clanie/clanie-aspects</url>
 	</scm>
 
 	<distributionManagement>
