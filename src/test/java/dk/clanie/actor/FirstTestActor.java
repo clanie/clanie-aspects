@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
  * 
  * @author cni
  */
-public interface TestActor1 {
+public interface FirstTestActor {
 
 	Object methodReturningObject(int arg);
 

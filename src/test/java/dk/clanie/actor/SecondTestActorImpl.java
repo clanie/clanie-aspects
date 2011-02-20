@@ -29,7 +29,7 @@ import org.springframework.scheduling.annotation.AsyncResult;
  * @author Claus Nielsen
  */
 @Actor
-public class TestActor2Impl implements TestActor2 {
+public class SecondTestActorImpl implements SecondTestActor {
 
 	@Override
 	public Future<?> methodCalledByFirstActor(int arg) {

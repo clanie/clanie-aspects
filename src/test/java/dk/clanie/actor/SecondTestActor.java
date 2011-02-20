@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
  * 
  * @author Claus Nielsen
  */
-public interface TestActor2 {
+public interface SecondTestActor {
 
 	Future<?> methodCalledByFirstActor(int arg);
 

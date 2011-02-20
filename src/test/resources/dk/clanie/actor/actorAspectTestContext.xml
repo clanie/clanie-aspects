@@ -7,7 +7,7 @@
 	<context:spring-configured />
 	<context:annotation-config />
 
-	<bean class="dk.clanie.actor.TestActor1Impl" primary="true" />
-	<bean class="dk.clanie.actor.TestActor2Impl" />
+	<bean class="dk.clanie.actor.FirstTestActorImpl" primary="true" />
+	<bean class="dk.clanie.actor.SecondTestActorImpl" />
 
 </beans>

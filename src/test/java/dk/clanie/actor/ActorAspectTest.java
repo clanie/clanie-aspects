@@ -45,8 +45,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("actorAspectTestContext.xml")
 public class ActorAspectTest {
 
-	@Autowired private TestActor1 actor;
-	@Autowired private TestActor2 actor2;
+	@Autowired private FirstTestActor actor;
+	@Autowired private SecondTestActor actor2;
 	
 	private static final int ITERATIONS = 5;
 	

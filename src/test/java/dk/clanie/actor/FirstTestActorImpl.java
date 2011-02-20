@@ -29,10 +29,10 @@ import org.springframework.scheduling.annotation.AsyncResult;
  * @author Claus Nielsen
  */
 @Actor
-public class TestActor1Impl implements TestActor1 {
+public class FirstTestActorImpl implements FirstTestActor {
 
 	@Autowired private 
-	TestActor2 actor2;
+	SecondTestActor actor2;
 
 	
 	@Override
