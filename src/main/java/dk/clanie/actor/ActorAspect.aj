@@ -41,6 +41,10 @@ privileged aspect ActorAspect perthis(constructor()) {
 	pointcut asyncMethod() : execution (!private (Future) (@Actor *).*(..));
 	pointcut blockingMethod() : execution (!private !(void || Future) (@Actor *).*(..));
 
+	// This aspect must be applied before any other. Otherwise 'after throwing' will not  
+	// work (probably because exceptions are thrown in another thread).
+	declare precedence: ActorAspect, *;
+	
 	// Add @Component on Actors
 	declare @type: (@Actor !@Component Object+): @Component;
 
@@ -80,17 +84,16 @@ privileged aspect ActorAspect perthis(constructor()) {
 	 * @return Future.
 	 */
 	@SuppressWarnings("all")
-	Object around() : voidMethod() {
+	void around() : voidMethod() {
 		if (Thread.currentThread() == myThread) {
-			return proceed();
+			proceed();
 		} else {
-			Future future = executor.submit(new Callable() {
+			executor.submit(new Runnable() {
 				@Override
-				public Object call() throws Exception {
-					return proceed();
+				public void run() {
+					proceed();
 				}
 			});
-			return future;
 		}
 	}
 
