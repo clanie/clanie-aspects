@@ -55,31 +55,33 @@ import org.springframework.util.ReflectionUtils;
  */
 public class ActorExecutionInterceptor implements MethodInterceptor, Ordered {
 
-	private final AsyncTaskExecutor asyncExecutor;
+	private final AsyncTaskExecutor executor;
 
 
 	/**
 	 * Create a new AsyncExecutionInterceptor.
+	 * 
 	 * @param asyncExecutor the Spring AsyncTaskExecutor to delegate to
 	 */
 	public ActorExecutionInterceptor(AsyncTaskExecutor asyncExecutor) {
 		Assert.notNull(asyncExecutor, "TaskExecutor must not be null");
-		this.asyncExecutor = asyncExecutor;
+		this.executor = asyncExecutor;
 	}
 
 	/**
 	 * Create a new AsyncExecutionInterceptor.
+	 * 
 	 * @param asyncExecutor the <code>java.util.concurrent</code> Executor
 	 * to delegate to (typically a {@link java.util.concurrent.ExecutorService}
 	 */
 	public ActorExecutionInterceptor(Executor asyncExecutor) {
-		this.asyncExecutor = new TaskExecutorAdapter(asyncExecutor);
+		this.executor = new TaskExecutorAdapter(asyncExecutor);
 	}
 
 
 	public Object invoke(final MethodInvocation invocation) throws Throwable {
 		@SuppressWarnings("rawtypes")
-		Future result = this.asyncExecutor.submit(new Callable<Object>() {
+		Future result = this.executor.submit(new Callable<Object>() {
 			public Object call() throws Exception {
 				try {
 					Object result = invocation.proceed();
@@ -98,7 +100,6 @@ public class ActorExecutionInterceptor implements MethodInterceptor, Ordered {
 			return result;
 		}
 		else if (Void.TYPE != returnType) {
-			// TODO Add exceptionhandling and timeout
 			try {
 				return result.get();
 			}
