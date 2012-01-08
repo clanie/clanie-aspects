@@ -30,6 +30,7 @@ import org.springframework.stereotype.Component;
  * Marker annotation for actors.
  * 
  * @author Claus Nielsen
+ * @see ActorAnnotationBeanPostProcessor
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

@@ -12,5 +12,8 @@
 	
 	<logger name="ch.qos.logback" level="ERROR" />
 	<logger name="org.springframework" level="WARN" />
+	<!--logger name="org.springframework" level="DEBUG" / -->
+
+	<logger name="dk.clanie" level="DEBUG" />
 
 </configuration>
