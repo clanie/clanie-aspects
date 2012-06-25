@@ -33,12 +33,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<excludes>
-						<exclude>**/*.java</exclude>
-					</excludes>
-					<testExcludes>
-						<exclude>**/*.java</exclude>
-					</testExcludes>
+					<!-- Following exclusions makes it possible to build with Maven BUT 
+						it breakes the project in Eclipse/STS... -->
+					<!-- <excludes> <exclude>**/*.java</exclude> </excludes> <testExcludes> 
+						<exclude>**/*.java</exclude> </testExcludes> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -59,6 +57,10 @@
 				</dependencies>
 				<executions>
 					<execution>
+						<!-- Executing in the process-sources phase to force aj compiler to run before Java compiler, which otherwise fails. -->
+						<!-- As stated in https://jira.codehaus.org/browse/MASPECTJ-92 this may have undesired consequences as -->
+						<!-- aj compiler now runs before eg. maven-resources-plugin:testResources and that's not the order as expected -->
+						<phase>process-sources</phase>
 						<goals>
 							<goal>compile</goal>
 							<goal>test-compile</goal>
