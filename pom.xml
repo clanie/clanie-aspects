@@ -37,6 +37,8 @@
 						it breakes the project in Eclipse/STS... -->
 					<!-- <excludes> <exclude>**/*.java</exclude> </excludes> <testExcludes> 
 						<exclude>**/*.java</exclude> </testExcludes> -->
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
