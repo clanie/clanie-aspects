@@ -37,8 +37,8 @@
 						it breakes the project in Eclipse/STS... -->
 					<!-- <excludes> <exclude>**/*.java</exclude> </excludes> <testExcludes> 
 						<exclude>**/*.java</exclude> </testExcludes> -->
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -77,8 +77,8 @@
 							<artifactId>spring-aspects</artifactId>
 						</aspectLibrary>
 					</aspectLibraries>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
 				</configuration>
 			</plugin>
 		</plugins>
