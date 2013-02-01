@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>dk.clanie</groupId>
 		<artifactId>clanie-parent-pom</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>1.7.0</version>
 	</parent>
 
 	<artifactId>clanie-aspects</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>Aspects</name>
-	<packaging>jar</packaging>
 	<description>Reusable AspectJ aspects.</description>
 	<inceptionYear>2011</inceptionYear>
 
@@ -23,20 +23,23 @@
 		<url>https://github.com/clanie/clanie-aspects</url>
 	</scm>
 
-	<!-- <distributionManagement> <site> <id>repository.local.release-site</id> 
-		<name>CN Consult Website</name> <url> scpexe://mvn.cn-consult.dk/var/lib/mvn/release-site/${project.artifactId}/${project.version} 
-		</url> </site> </distributionManagement> -->
+
+	<properties>
+		<version.spring>3.2.0.RELEASE</version.spring>
+	</properties>
+
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.0</version>
 				<configuration>
 					<!-- Following exclusions makes it possible to build with Maven BUT 
 						it breakes the project in Eclipse/STS... -->
 					<!-- <excludes> <exclude>**/*.java</exclude> </excludes> <testExcludes> 
 						<exclude>**/*.java</exclude> </testExcludes> -->
+					<compilerVersion>${version.java}</compilerVersion>
 					<source>${version.java}</source>
 					<target>${version.java}</target>
 				</configuration>
@@ -59,9 +62,12 @@
 				</dependencies>
 				<executions>
 					<execution>
-						<!-- Executing in the process-sources phase to force aj compiler to run before Java compiler, which otherwise fails. -->
-						<!-- As stated in https://jira.codehaus.org/browse/MASPECTJ-92 this may have undesired consequences as -->
-						<!-- aj compiler now runs before eg. maven-resources-plugin:testResources and that's not the order as expected -->
+						<!-- Executing in the process-sources phase to force aj compiler to 
+							run before Java compiler, which otherwise fails. -->
+						<!-- As stated in https://jira.codehaus.org/browse/MASPECTJ-92 this 
+							may have undesired consequences as -->
+						<!-- aj compiler now runs before eg. maven-resources-plugin:testResources 
+							and that's not the expected order -->
 						<phase>process-sources</phase>
 						<goals>
 							<goal>compile</goal>
@@ -95,68 +101,83 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.6</version>
 		</dependency>
 
 		<!-- External dependencies -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
+			<version>${version.aspectj}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
+			<version>${version.aspectj}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
+			<version>${version.spring}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
+			<version>${version.spring}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>${version.spring}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
+			<version>${version.spring}</version>
 		</dependency>
 		<dependency> <!-- Requered for proxying classes -->
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>javax.persistence</artifactId>
+			<version>2.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<version>1.6.2</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+			<version>1.0.6</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
+			<version>${version.spring}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
 			<scope>test</scope>
 		</dependency>
 
