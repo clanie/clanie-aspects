@@ -31,14 +31,16 @@
 
 	<build>
 		<plugins>
-			<plugin>
+ 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>2.5.1</version>
 				<configuration>
-					<!-- Following exclusions makes it possible to build with Maven BUT 
-						it breakes the project in Eclipse/STS... -->
-					<!-- <excludes> <exclude>**/*.java</exclude> </excludes> <testExcludes> 
-						<exclude>**/*.java</exclude> </testExcludes> -->
+					<!--
+					Following exclusions makes it possible to build with Maven BUT 
+						it breakes the project in Eclipse/STS...
+					<excludes> <exclude>**/*.java</exclude> </excludes>
+					<testExcludes> <exclude>**/*.java</exclude> </testExcludes>
+					-->
 					<compilerVersion>${version.java}</compilerVersion>
 					<source>${version.java}</source>
 					<target>${version.java}</target>
@@ -62,12 +64,14 @@
 				</dependencies>
 				<executions>
 					<execution>
-						<!-- Executing in the process-sources phase to force aj compiler to 
-							run before Java compiler, which otherwise fails. -->
-						<!-- As stated in https://jira.codehaus.org/browse/MASPECTJ-92 this 
-							may have undesired consequences as -->
-						<!-- aj compiler now runs before eg. maven-resources-plugin:testResources 
-							and that's not the expected order -->
+						<!--
+						Executing in the process-sources phase to force aj compiler to 
+						run before Java compiler, which otherwise fails.
+						As stated in https://jira.codehaus.org/browse/MASPECTJ-92 this 
+						may have undesired consequences as aj compiler now runs before
+						eg. maven-resources-plugin:testResources and that's not the
+						expected order
+						-->
 						<phase>process-sources</phase>
 						<goals>
 							<goal>compile</goal>
@@ -87,7 +91,7 @@
 					<target>${version.java}</target>
 				</configuration>
 			</plugin>
-		</plugins>
+ 		</plugins>
 	</build>
 
 	<dependencies>
