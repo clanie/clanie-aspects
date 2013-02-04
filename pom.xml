@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>clanie-aspects</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Aspects</name>
@@ -20,7 +20,7 @@
 	<scm>
 		<connection>scm:git:ssh://git@github.com/clanie/clanie-aspects.git</connection>
 		<url>https://github.com/clanie/clanie-aspects</url>
-	  <tag>clanie-aspects-0.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 
