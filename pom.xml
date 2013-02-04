@@ -19,7 +19,7 @@
 	<url>https://github.com/clanie/clanie-aspects</url>
 
 	<scm>
-		<connection>scm:git:git://github.com/clanie/clanie-aspects.git</connection>
+		<connection>scm:git:ssh://git@github.com/clanie/clanie-aspects.git</connection>
 		<url>https://github.com/clanie/clanie-aspects</url>
 	</scm>
 
